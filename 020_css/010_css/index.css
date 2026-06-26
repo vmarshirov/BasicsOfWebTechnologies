@@ -1,0 +1,101 @@
+/* ============================================================
+   CSS-демонстрация: каскад, селекторы, псевдоклассы
+   ============================================================ */
+
+/* :root — корневой элемент документа; здесь удобно объявлять CSS-переменные (custom properties).
+   Переменные позволяют менять цвета/размеры в одном месте — как константы в программировании. */
+:root {
+    --color-primary:   #1a73e8;
+    --color-accent:    silver;
+    --font-size-base:  16px;
+}
+
+/* Универсальный селектор * применяется ко всем элементам.
+   Используется осторожно: может снижать производительность на больших страницах. */
+* {
+    border-width:  1px;
+    border-style:  solid;
+    /* ❌ Опечатка в оригинале: margin: 5px: auto — двоеточие вместо пробела.
+       ✅ Правильно: */
+    margin:        5px auto;
+    padding:       4px;
+    font-size:     var(--font-size-base); /* используем CSS-переменную */
+    box-sizing:    border-box; /* ширина включает padding и border — современный стандарт */
+}
+
+/* em  — относительно размера шрифта родителя */
+.em  { font-size: 1.0em; }
+/* rem — относительно размера шрифта :root (html), не зависит от вложенности */
+.rem { font-size: 1.0rem; }
+
+/* Если у .parent задан font-size: 25px, то .em внутри него будет 25px,
+   а .rem останется равным корневому (16px) */
+.parent { font-size: 25px; }
+
+body {
+    background-color: white;
+    background-image:     url("./1.png");
+    background-repeat:    no-repeat;
+    background-position:  top right;
+    background-size:      10%;
+    color: black;
+}
+
+/* Элементный селектор p — применяется ко всем абзацам */
+p { background: var(--color-accent); }
+
+/* Псевдоэлемент ::first-line — стилизует первую строку абзаца.
+   Применяется только к блочным элементам. Двойное двоеточие :: — стандарт CSS3. */
+p::first-line { background: red; }
+
+/* Псевдокласс :first-child — элемент, если он первый дочерний у своего родителя */
+p:first-child  { background: green; }
+
+img {
+    margin:           10px;
+    padding:          3px;
+    height:           40px;
+    float:            left;
+    background-color: yellow;
+}
+
+/* ❌ "card" без точки — это элементный (тег) селектор.
+   Если card используется как класс (<div class="card">), правильный селектор: .card */
+.card { margin: 2px; }
+
+/* Классовый селектор (.note) */
+.note {
+    font-weight: bold;
+    font-size:   larger;
+}
+
+/* ID-селектор (#news) — уникальный элемент на странице.
+   Используйте id для JS и якорей; для стилей предпочтительны классы. */
+#news {
+    color:      green;
+    background: beige;
+}
+
+/* ❌ "p font:first-child" — некорректный составной псевдоселектор в оригинале.
+   font — устаревший тег; :first-child на нём не нужен.
+   ✅ Пример корректного составного селектора: */
+p > strong:first-child {
+    color:       red;
+    font-weight: bold;
+}
+
+/* Сброс маркеров у li (list-style-type: none) — убирает точки/цифры */
+ul li { list-style-type: none; }
+
+/* Стили для состояний ссылок: порядок важен — LVHA (Link → Visited → Hover → Active/Focus) */
+a:link    { color: black;  text-decoration: none; }
+a:visited { color: green;  text-decoration: none; }
+a:hover   { color: red;    background-color: rgba(150, 150, 150, 0.1); }
+a:focus   { color: brown; }  /* :focus — для клавиатурной навигации (доступность) */
+
+/* Класс .active — активная/текущая ссылка в навигации */
+.active {
+    color:            red;
+    text-decoration:  underline;
+    background-color: black;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблицы в HTML5</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 1rem; }
+
+        /* ❌ УСТАРЕЛО: атрибуты align, bgcolor, background, cellspacing, cellpadding у таблицы.
+           ✅ Всё стилизуется через CSS */
+        .demo-table {
+            width: 700px;
+            margin: 0 auto;              /* заменяет align="center" */
+            border-collapse: collapse;   /* убирает двойные границы */
+            background-image: url('../030_images/background.jpg');
+            background-size: cover;
+        }
+
+        .demo-table td, .demo-table th {
+            border: 1px solid #333;
+            padding: 10px;               /* заменяет cellpadding="10" */
+        }
+
+        /* cellspacing заменяется border-spacing (только при border-collapse: separate) */
+        .demo-table-spaced {
+            border-collapse: separate;
+            border-spacing: 5px;
+        }
+
+        .cell-aqua    { background-color: aqua; }
+        .cell-fuchsia { background-color: fuchsia; }
+        .cell-tall    { height: 200px; }
+        .cell-footer  { height: 100px; text-align: right; vertical-align: top; }
+    </style>
+</head>
+
+<body>
+
+    <h3 style="text-align:center;">Таблицы в HTML5</h3>
+
+    <!-- thead / tbody / tfoot — семантические секции таблицы (HTML5, повышают доступность) -->
+    <table class="demo-table">
+
+        <thead>
+            <tr>
+                <!-- colspan объединяет ячейки по горизонтали — атрибут актуален и в HTML5 -->
+                <td colspan="3" class="cell-aqua" style="height:50px;">
+                    Логотип, название (colspan="3")
+                </td>
+                <!-- rowspan объединяет ячейки по вертикали -->
+                <td rowspan="3">rowspan="3" — ячейка занимает 3 строки</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="cell-tall">Меню</td>
+                <td class="cell-fuchsia" style="width:300px;">
+                    <img src="../030_images/perl.gif" width="250" alt="Иллюстрация">
+                </td>
+                <td>Дополнительная информация</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td class="cell-footer" colspan="3">
+                    Обратная связь и выходные данные (вверху и справа)
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <hr>
+    <h4>Справочник: устаревшие атрибуты → современный CSS</h4>
+    <table border="1" cellpadding="6" style="border-collapse:collapse; width:100%;">
+        <thead style="background:#eee;">
+            <tr><th>Устаревший атрибут</th><th>CSS-замена</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>align="center"</code></td><td><code>margin: 0 auto</code></td></tr>
+            <tr><td><code>bgcolor="Aqua"</code></td><td><code>background-color: aqua</code></td></tr>
+            <tr><td><code>background="img.jpg"</code></td><td><code>background-image: url(...)</code></td></tr>
+            <tr><td><code>cellspacing="5"</code></td><td><code>border-spacing: 5px</code></td></tr>
+            <tr><td><code>cellpadding="10"</code></td><td><code>padding: 10px</code> на td/th</td></tr>
+            <tr><td><code>width="700px"</code></td><td><code>width: 700px</code> в CSS</td></tr>
+            <tr><td><code>height="50px"</code></td><td><code>height: 50px</code> в CSS</td></tr>
+        </tbody>
+    </table>
+
+    <details open>
+        <summary>📋 Задания</summary>
+        <p><strong>Задание 1.</strong> Аналогично заданию с паспортом создать страницу
+        с использованием таблиц и <code>thead</code>/<code>tbody</code>/<code>tfoot</code>,
+        обеспечив точное расположение фрагментов. Все стили — только CSS.</p>
+        <p><strong>Задание 2.</strong> Создать полноценную страницу: фоновое изображение через CSS,
+        таблица с заданными параметрами (серый фон, красные границы, ширина 600px, по центру).
+        Строки таблицы согласно условию. Всё оформить аккуратно с комментариями.</p>
+    </details>
+
+</body>
+</html>

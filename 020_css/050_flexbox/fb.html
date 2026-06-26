@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox — пример раскладки</title>
+    <!-- Внешний CSS-файл (лучшая практика: разделение структуры и стилей) -->
+    <link href="fb.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Flexbox</h1>
+    </header>
+
+    <!--
+        section — flex-контейнер (display: flex задан в fb.css).
+        Дочерние article — flex-элементы.
+    -->
+    <section>
+
+        <!-- Класс .order_align-self: order:0; align-self:flex-end -->
+        <article class="order_align-self">
+            <h2>Заголовок 1 (.order_align-self)</h2>
+            <!--
+                src="_" намеренно «сломан» — демонстрирует alt-текст.
+                В реальном проекте замените src на путь к изображению.
+            -->
+            <img src="_" alt="Изображение-заглушка">
+            <p>Этот article прижат к <em>нижнему краю</em> контейнера
+               (align-self: flex-end).</p>
+        </article>
+
+        <!-- Класс .basis_grow_shrink: flex-grow:0; flex-shrink:0 — фиксированная ширина -->
+        <article class="basis_grow_shrink">
+            <h2>Заголовок 2 (.basis_grow_shrink)</h2>
+            <img src="_" alt="Изображение-заглушка">
+            <p>Этот article <em>не растягивается и не сжимается</em>
+               (flex-grow: 0; flex-shrink: 0).
+               Его ширина равна flex-basis из CSS.</p>
+        </article>
+
+        <!-- Без специального класса: стандартное поведение flex-элемента -->
+        <article>
+            <h2>Заголовок 3 (default)</h2>
+            <!-- .button_flex — вложенный flex-контейнер: кнопки в обратном порядке -->
+            <div class="button_flex">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+            </div>
+            <div>
+                <img src="_" alt="Изображение-заглушка">
+                <p>Содержание параграфа рядом с изображением.</p>
+            </div>
+            <div>
+                <p>Дополнительный абзац.</p>
+            </div>
+        </article>
+
+    </section>
+
+</body>
+
+</html>

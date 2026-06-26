@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы. Отправляем данные на сервер</title>
+    <style>
+        body  { font-family: sans-serif; max-width: 700px; margin: 0 auto; padding: 1rem; }
+        label { display: block; margin-top: 0.8rem; font-weight: bold; }
+        input[type="text"], input[type="number"],
+        input[type="date"], input[type="password"],
+        select, textarea { width: 100%; padding: 4px; box-sizing: border-box; margin-top: 2px; }
+        .row  { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    </style>
+</head>
+
+<body>
+    <h3 style="text-align:center;">Формы. Отправляем данные на сервер</h3>
+
+    <!--
+        action — URL сервера-обработчика.
+        method="post" — тело запроса скрыто (в отличие от get, где данные видны в URL).
+        httpbin.org/post — тестовый сервис: возвращает полученные данные в формате JSON.
+
+        ❌ target="_self" в form не является валидным атрибутом формы.
+           Атрибут target есть у <a>, и у <form> тоже поддерживается, но
+           _self — значение по умолчанию, поэтому указывать его необязательно.
+    -->
+    <form action="https://httpbin.org/post" method="post">
+
+        <!-- hidden — скрытое поле; значение отправляется на сервер, но не видно пользователю -->
+        <input type="hidden" name="function" value="page">
+        <input type="hidden" name="page_id"  value="3">
+
+        <!-- label связан с input через атрибут for/id — улучшает доступность (a11y):
+             клик по тексту метки активирует поле -->
+        <label for="last_name">Фамилия:</label>
+        <input type="text" id="last_name" name="last_name" value="Петров"
+               placeholder="Введите фамилию" maxlength="50" required>
+
+        <label for="age">Возраст:</label>
+        <!-- min/max/step — HTML5-атрибуты валидации числовых полей -->
+        <input type="number" id="age" name="age" value="0" min="0" max="120">
+
+        <label>Место проживания:</label>
+        <div class="row">
+            <label style="font-weight:normal;">
+                <input type="radio" name="place" value="Moscow"> Москва
+            </label>
+            <label style="font-weight:normal;">
+                <input type="radio" name="place" value="Nizhny" checked> Нижний Новгород
+            </label>
+        </div>
+
+        <label>Стаж работы:</label>
+        <div class="row">
+            <label style="font-weight:normal;">
+                <input type="checkbox" name="experience" value="10" checked> Маркетологом — 10 лет
+            </label>
+            <label style="font-weight:normal;">
+                <input type="checkbox" name="experience" value="20" checked> Экономистом — 20 лет
+            </label>
+            <label style="font-weight:normal;">
+                <input type="checkbox" name="experience" value="30" checked> Менеджером — 30 лет
+            </label>
+        </div>
+
+        <label for="languages">Знание английского:</label>
+        <!-- Атрибуты OPTION и SELECT пишем строчными буквами — HTML5 регистронезависим,
+             но строчные — современный стиль -->
+        <select id="languages" name="languages">
+            <option value="fluent">Владею свободно</option>
+            <option value="dictionary">Читаю и перевожу со словарём</option>
+        </select>
+
+        <label for="textarea">Дополнительная информация:</label>
+        <textarea id="textarea" name="textarea" cols="80" rows="4"
+                  placeholder="Для заметок"></textarea>
+
+        <label for="user_date">Дата:</label>
+        <input type="date" id="user_date" name="user_date" value="2024-10-02">
+
+        <label for="password">Пароль:</label>
+        <!-- ❌ Никогда не указывайте реальный пароль в атрибуте value — он виден в HTML-коде -->
+        <input type="password" id="password" name="password" size="9" autocomplete="current-password">
+
+        <!-- Системные поля формы (не менять name!) -->
+        <label for="file_name">Название файла:</label>
+        <!-- ❌ type="Техт" — опечатка в оригинале; браузер трактует это как type="text" (fallback),
+             но явно указывать нужно type="text" -->
+        <input type="text" id="file_name" name="000_file_name"
+               value="Н_ОW_Г_326510_1_Ivanov.txt" size="30">
+
+        <label for="mode">Тип записи в файл:</label>
+        <select id="mode" name="010_mode">
+            <option value="a">a — дозаписать в файл</option>
+            <option value="w">w — очистить файл и записать</option>
+        </select>
+
+        <div class="actions">
+            <!-- type="reset" — сбрасывает форму к значениям по умолчанию -->
+            <input type="reset"  value="Сбросить">
+            <!-- type="submit" — отправляет форму -->
+            <input type="submit" value="Отправить">
+        </div>
+
+    </form>
+
+    <details open>
+        <summary>📋 Задания</summary>
+        <p><strong>Задание 1.</strong> В <code>~/public_html/education/forms</code> создать страницу
+        для отправки данных на удалённый сервер (заказы товаров, телефонный справочник и т.д.).
+        Использовать <code>&lt;label&gt;</code>, <code>required</code>, <code>placeholder</code>.</p>
+        <p><strong>Задание 2.</strong> Создать страницу-форму паспортных данных. Обязательные типы:
+        text, number, radio, checkbox, date, password, hidden. Отправка на httpbin.org/post.</p>
+    </details>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Каскадные таблицы стилей</title>
+
+    <link rel="stylesheet" type="text/css" href="index_01.css" />
+</head>
+
+<body>
+    <div class="d_00">
+        00_Примеры позиционирования
+
+        <div class="d_13">
+            13_Примеры позиционирования
+        </div>
+
+        <div class="d_15">
+            15_Примеры позиционирования
+        </div>
+
+        <div class="d_17">
+            17_Примеры позиционирования
+        </div>
+
+        <div class="d_19">
+            19_Примеры позиционирования
+
+            <div class="d_19_01">
+                <img src="1.png" style="height: 60px" /> <br />19_01_Примеры
+                позиционирования и создания представлений с использованием блоков и
+                таблиц "
+            </div>
+        </div>
+    </div>
+
+    <div style="
+        position: relative;
+        top: 20px;
+        left: 0px;
+        width: 1024px;
+        border: solid 1px red;
+      ">
+        <div style="width: 1024px; high: 30; text-align: center">Заголовок</div>
+
+        <div style="
+          width: 1024px;
+          text-align: left;
+          border-top: 1px solid red;
+          border-bottom: 1px solid red;
+        ">
+            <div style="float: left; border-right: 1px solid red; width: 150px">
+                Навигация
+            </div>
+
+            <div style="">Содержание</div>
+        </div>
+
+        <div style="width: 1024px; text-align: left">Подвал</div>
+    </div>
+</body>
+
+</html>

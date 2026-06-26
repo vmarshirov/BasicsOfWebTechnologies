@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport — обязателен для адаптивных (mobile-first) сайтов -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Теги в заголовке документа (&lt;head&gt;)</title>
+
+    <!-- SEO-метаданные: описание и ключевые слова для поисковых роботов -->
+    <meta name="description" content="Internet & HTML — учебная страница">
+    <meta name="keywords"    content="поисковый, робот, индексация, слово, страница">
+
+    <!-- Open Graph (og:) — для красивых превью при отправке ссылки в мессенджерах/соцсетях -->
+    <meta property="og:title"       content="Основы web-технологий">
+    <meta property="og:description" content="Учебный пример тегов head">
+    <meta property="og:type"        content="website">
+
+    <!-- ❌ УСТАРЕЛО: http-equiv="Content-Type" с charset не нужен при наличии <meta charset="UTF-8"> -->
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+
+    <!-- ❌ УСТАРЕЛО: http-equiv="Refresh" — перенаправление делается через JS или сервер (HTTP 301/302) -->
+    <!-- <meta http-equiv="Refresh" content="5; url=https://ya.ru"> -->
+
+    <!-- ❌ УСТАРЕЛО: no-cache через meta — кэш управляется HTTP-заголовками на сервере -->
+    <!-- <meta http-equiv="cache-control" content="no-cache"> -->
+
+    <!-- Favicon — иконка сайта в закладках и вкладке браузера (SVG — современный формат) -->
+    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+    <!-- Подключение внешнего CSS (правильный способ — через link, не через @import) -->
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+</head>
+
+<body>
+    <h1 style="text-align:center;">Управляем кодировками, загрузкой и поведением браузера</h1>
+
+    <p>В проектах всегда используем <strong>UTF-8</strong> и переносы строк <strong>LF</strong> (Unix-стиль).</p>
+
+    <details open>
+        <summary>📋 Задание</summary>
+        <p>В <code>~/public_html/education/utf-8_cp1251</code> на основе предыдущего примера создать два файла,
+        демонстрирующие <strong>корректное</strong> (UTF-8 + правильный meta charset) и
+        <strong>некорректное</strong> (несовпадение кодировки файла и meta) отображение кириллицы в браузере.</p>
+    </details>
+
+    <hr>
+    <h2>Справочник: ключевые теги &lt;head&gt;</h2>
+    <table border="1" cellpadding="6" style="border-collapse:collapse; width:100%;">
+        <thead style="background:#eee;">
+            <tr><th>Тег / атрибут</th><th>Назначение</th><th>Статус</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>Кодировка документа</td><td>✅ Актуально</td></tr>
+            <tr><td><code>&lt;meta name="viewport"&gt;</code></td><td>Масштаб на мобильных</td><td>✅ Обязательно</td></tr>
+            <tr><td><code>&lt;meta name="description"&gt;</code></td><td>SEO-описание</td><td>✅ Актуально</td></tr>
+            <tr><td><code>&lt;meta property="og:*"&gt;</code></td><td>Open Graph (соцсети)</td><td>✅ Актуально</td></tr>
+            <tr><td><code>&lt;link rel="icon"&gt;</code></td><td>Иконка сайта</td><td>✅ Актуально</td></tr>
+            <tr><td><code>http-equiv="Refresh"</code></td><td>Авто-перенаправление</td><td>❌ Устарело</td></tr>
+            <tr><td><code>http-equiv="cache-control"</code></td><td>Управление кэшем</td><td>❌ Устарело</td></tr>
+            <tr><td><code>http-equiv="Content-Type"</code></td><td>Тип контента</td><td>❌ Устарело</td></tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

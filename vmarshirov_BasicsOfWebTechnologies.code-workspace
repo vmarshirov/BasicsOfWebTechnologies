@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.fontSize": 12,
+		"editor.minimap.sectionHeaderFontSize": 8,
+		"editor.suggestFontSize": 8,
+		"chat.editor.fontSize": 12,
+		"chat.fontSize": 12,
+		"debug.console.fontSize": 12,
+		"scm.inputFontSize": 12,
+		"terminal.integrated.fontSize": 12,
+		"notebook.output.fontSize": 12,
+		"markdown.preview.fontSize": 12
+	}
+}

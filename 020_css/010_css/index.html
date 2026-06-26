@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каскадные таблицы стилей (CSS)</title>
+
+    <!-- ✅ Внешний CSS-файл: предпочтительный способ подключения стилей.
+         rel="stylesheet" — обязателен; type="text/css" — не нужен в HTML5 -->
+    <link href="./index.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <!--
+        Стиль body задан в index.css.
+        ❌ Не применяем inline-стили к body — они трудно переопределяются и не масштабируются.
+    -->
+    Стиль текста для body (из внешнего CSS)
+
+    <!-- Три способа задать стиль (приоритет: inline > style в head > external CSS) -->
+    <p>p1 — стиль p из внешнего/глобального файла (background: silver)</p>
+    <p style="border-style: solid; color: green;">p2 — inline-стиль на элементе</p>
+    <p style="border-style: dotted; border-color: blue; color: red; text-align: center; line-height: 4.0em;">
+        p3 — text-align: center; line-height: 4.0em
+    </p>
+    <p style="border-style: solid; text-decoration: none; letter-spacing: 0.1em;">
+        p4 — примеры CSS. letter-spacing: 0.1em; word-spacing:
+        <br>и ещё
+        <span style="background: green; color: red; word-spacing: 0.0rem;">возможности</span>
+        стилей
+        <br>Степени и индексы:
+        <span style="vertical-align: super;">vertical-align: super</span>
+        и
+        <span style="vertical-align: sub;">vertical-align: sub</span>
+    </p>
+
+    <p>p5 — стиль из внешней таблицы.</p>
+
+    <!-- .note — классовый селектор -->
+    <p class="note">p6 — назначен класс <code>.note</code></p>
+    <p>p6 — <span class="note">класс .note на span</span></p>
+
+    <!-- #news — ID-селектор. ID на странице должен быть уникальным -->
+    <p id="news">p7 — назначен идентификатор <code>#news</code></p>
+
+    <!-- Демонстрация em vs rem -->
+    <div>
+        <p class="rem">rem (корневой размер)</p>
+        <p class="em">em (размер родителя)</p>
+    </div>
+    <div class="parent">
+        .parent (font-size: 25px)
+        <p class="rem">rem — всегда от :root (не меняется)</p>
+        <p class="em">em — от родителя (25px → увеличенный шрифт)</p>
+    </div>
+
+    <!-- Состояния ссылок: link, visited, hover, focus (active) -->
+    <ul>
+        <li><a href="./index.html">Обычная ссылка (:link)</a></li>
+        <li><a href="./index.html">Посещённая ссылка (:visited)</a></li>
+        <li><a class="active" href="./index.html">Активная ссылка (.active)</a></li>
+    </ul>
+
+    <details open>
+        <summary>📋 Задания</summary>
+        <ol>
+            <li>Задание «Форматирование» переделать с использованием таблицы стилей.</li>
+            <li>Задание «Таблицы» оформить с CSS.</li>
+            <li>Сформировать меню из ненумерованного списка:
+                расстояние между элементами в 3 раза больше разрывов строк.</li>
+            <li>Отдельная страница с блочными и табличными структурами; все стили — во внешнем файле.</li>
+            <li>Навигационную часть в div дополнить частью с новостями справа.</li>
+            <li>Навигация с изменяющимся фоновым изображением.</li>
+            <li>Задание «Паспорт» выполнить с использованием CSS.</li>
+        </ol>
+    </details>
+
+</html>

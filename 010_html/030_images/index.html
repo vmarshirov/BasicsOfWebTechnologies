@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изображения в HTML5</title>
+    <style>
+        body { font-family: sans-serif; max-width: 860px; margin: 0 auto; padding: 1rem; }
+
+        /* ❌ УСТАРЕЛО: атрибут background у <body> — не валиден в HTML5.
+           ✅ Фоновое изображение задаётся через CSS background-image */
+        body {
+            background-image: url('./background.jpg');
+            background-size: cover;       /* масштабирование фона */
+            background-attachment: fixed; /* фиксированный параллакс-фон */
+        }
+
+        img { display: block; margin: 8px 0; }
+
+        /* Адаптивность: изображение не шире контейнера */
+        img.responsive { max-width: 100%; height: auto; }
+    </style>
+</head>
+
+<body>
+
+    <!-- ❌ УСТАРЕЛО: align="center" как атрибут тега h4 -->
+    <h4 style="text-align:center;">Изображения на сайте</h4>
+
+    <!-- Изображение из той же папки. alt — обязателен для доступности (a11y) и SEO -->
+    <p>
+        <img src="./src.jpg" alt="Фото из текущей папки" width="200">
+        <br>Рисунок из раздела, содержащего текущий HTML-файл.
+    </p>
+
+    <!-- Масштабирование через CSS, а не атрибут width в px — гибче -->
+    <p>
+        <img src="./src.jpg" alt="Уменьшенный вариант" style="width:50px; height:auto;">
+        <br>Масштаб задан через CSS (width:50px; height:auto — сохраняет пропорции).
+    </p>
+
+    <!-- Пример «сломанной» картинки: alt отображается вместо изображения -->
+    <p>
+        <img src="#" alt="Изображение не найдено — отображается alt-текст">
+        <br>Так выглядит тег img, когда файл не найден. alt — обязателен.
+    </p>
+
+    <!-- Внешний ресурс. loading="lazy" — современная «ленивая» загрузка (только когда видно) -->
+    <p>
+        <img src="https://www.hse.ru/images/main/main_logo_ru.svg"
+             alt="Логотип НИУ ВШЭ"
+             width="400"
+             loading="lazy">
+        <br>Рисунок с внешнего ресурса. Атрибут <code>loading="lazy"</code> улучшает производительность.
+    </p>
+
+    <!-- figure + figcaption — семантический способ оформления изображения с подписью (HTML5) -->
+    <figure>
+        <img src="./src.jpg" alt="Пример с figcaption" width="200">
+        <figcaption>Семантическая подпись к изображению через &lt;figcaption&gt;</figcaption>
+    </figure>
+
+    <details open>
+        <summary>📋 Задание</summary>
+        <p>В <code>~/public_html/education/images</code> создать прототип паспорта (страницы 2 и 3),
+        содержащий фамилию и другие данные (персональные данные можно изменить, серию и номер не отображать).
+        Загрузки изображений произвести из: текущего раздела, из библиотеки изображений, с внешнего ресурса.
+        Использовать тег <code>&lt;figure&gt;</code> и атрибут <code>loading="lazy"</code>.</p>
+    </details>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гиперссылки и закладки</title>
+    <style>
+        body { font-family: sans-serif; max-width: 860px; margin: 0 auto; padding: 1rem; }
+        nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+        nav a  { text-decoration: none; color: #0057b8; }
+        nav a:hover { text-decoration: underline; }
+        /* Плавная прокрутка при переходе по якорю — современная CSS-фича */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+
+<body>
+
+    <!-- nav — семантический элемент навигации (HTML5) -->
+    <nav>
+        <ul>
+            <li><a href="../060_anchor/index.html">
+                <strong>Начальная (текущая) страница сайта</strong></a>
+            </li>
+            <li><a href="../060_anchor/index.html#head1">
+                Страница с переходом на закладку</a>
+            </li>
+            <li><a href="https://www.hse.ru" target="_blank" rel="noopener noreferrer">
+                Ссылка на внешний сайт</a>
+            </li>
+            <!--
+                rel="noopener noreferrer" — обязателен при target="_blank":
+                без него открытая страница может получить доступ к window.opener
+                (уязвимость "reverse tabnapping"). Современные браузеры добавляют noopener
+                автоматически, но явное указание — хорошая практика.
+            -->
+            <li>
+                <a href="https://www.hse.ru" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.hse.ru/f/src/home/community.png"
+                         height="30" alt="Логотип ВШЭ">
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <!-- id на h4 — современный способ создания якоря; <a name="..."> устарел -->
+    <h4 id="top">Закладки (внутренняя навигация по странице)</h4>
+    <ul>
+        <!-- Переход на якорь #head1 внутри этой же страницы -->
+        <li><a href="#head1">На Главу 1 (якорная ссылка)</a></li>
+    </ul>
+
+    <p>Абзац текста <br>Строка текста<br>Строка текста<br>Строка текста<br>Строка текста</p>
+    <p>Абзац текста <br>Строка текста<br>Строка текста<br>Строка текста<br>Строка текста</p>
+
+    <!-- Якорь на заголовке: id="head1" -->
+    <h4 id="head1">Глава 1 (id="head1")</h4>
+    <p>Абзац текста <br>Строка текста<br>Строка текста<br>Строка текста<br>Строка текста</p>
+    <p>Абзац текста <br>Строка текста<br>Строка текста<br>Строка текста<br>Строка текста</p>
+
+    <!-- Ссылка «наверх»: target="_self" здесь лишний — это поведение по умолчанию -->
+    <p style="text-align:right;">
+        <a href="#top">↑ К заголовку «Закладки»</a>
+    </p>
+
+    <hr>
+    <details open>
+        <summary>📋 Задания</summary>
+        <p><strong>Задание 1.</strong> Создать 3 раздела с заголовками h3, якорной навигацией
+        вверху-справа и ссылками «к началу страницы» после каждого раздела (справа).
+        Создать графические ссылки 10×10px: первая открывает изображение в реальном размере
+        в новом окне, вторая — увеличенное в 2 раза. Использовать <code>rel="noopener noreferrer"</code>.</p>
+
+        <p><strong>Задание 2.</strong> Дополнить все страницы единым навигационным фрагментом
+        (общая шапка с ссылками между страницами сайта).</p>
+    </details>
+
+</body>
+</html>

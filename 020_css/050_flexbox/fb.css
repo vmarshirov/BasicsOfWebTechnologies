@@ -1,0 +1,102 @@
+/* ============================================================
+   Flexbox — основные концепции
+   ============================================================
+
+   Flexbox решает задачи:
+   - горизонтальное/вертикальное выравнивание элементов
+   - равномерное распределение пространства
+   - изменение порядка элементов без правки HTML
+   - адаптивные (responsive) раскладки
+
+   Документация: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+*/
+
+body {
+    max-width:    1600px;
+    margin:       0 auto;
+    padding:      0 10px;
+    background-color: rgba(250, 220, 150, 0.78);
+    font-size:    14px;
+}
+
+header {
+    background: purple;
+    height:     2.0rem;
+}
+
+h1, h2 {
+    text-align: center;
+    margin:     0;
+}
+
+img {
+    height:           30px;
+    width:            70px;
+    border:           8px solid #333; /* shorthand вместо border-style + border-width */
+    margin:           18px;
+    padding:          5px;
+    background-color: blue;
+}
+
+/* ——— FLEX-КОНТЕЙНЕР (section) ——— */
+section {
+    background-color: brown;
+    min-height:       500px;
+
+    display:          flex;           /* превращает section в flex-контейнер */
+    flex-direction:   row;            /* главная ось — горизонтальная (по умолчанию) */
+    flex-wrap:        wrap;           /* ❗ nowrap → wrap: при нехватке места переносим элементы,
+                                          вместо выхода за границу экрана */
+    justify-content:  flex-start;     /* выравнивание вдоль главной оси (было: left — нестандартно) */
+    align-items:      flex-end;       /* выравнивание вдоль поперечной оси */
+    gap:              0;              /* современное свойство вместо margin между flex-элементами */
+}
+
+/* ——— FLEX-ЭЛЕМЕНТ (article) ——— */
+article {
+    flex-basis:   350px;  /* базовая ширина; браузер может изменять её согласно flex-grow/shrink */
+    border:       4px solid #333;
+    padding:      10px;
+    margin:       20px;
+    background:   aqua;
+}
+
+/* ——— ИНДИВИДУАЛЬНЫЕ СВОЙСТВА FLEX-ЭЛЕМЕНТОВ ——— */
+
+/* order — задаёт позицию элемента в потоке (меньше = раньше, 0 по умолчанию).
+   align-self — локальное выравнивание, переопределяет align-items контейнера */
+.order_align-self {
+    order:       0;
+    align-self:  flex-end;  /* этот элемент прижат к нижнему краю поперечной оси */
+}
+
+/* flex-grow   — коэффициент роста (0 = не растягивается)
+   flex-shrink — коэффициент сжатия (0 = не сжимается)
+   Значение по умолчанию: flex-grow:0; flex-shrink:1 */
+.basis_grow_shrink {
+    flex-grow:   0;
+    flex-shrink: 0;   /* элемент сохраняет flex-basis даже при нехватке места */
+}
+
+button {
+    margin: 1.0rem;
+    cursor: pointer; /* указатель меняется на «руку» при наведении */
+}
+
+/* Пример: кнопки в ряд с переносом и выравниванием по правому краю */
+.button_flex {
+    display:         flex;
+    flex-direction:  row-reverse;   /* обратный порядок кнопок */
+    flex-wrap:       wrap;
+    justify-content: flex-end;      /* выравнивание по правому краю */
+    align-items:     flex-start;
+}
+
+/* Пример hover-эффекта на изображение (раскомментируйте для демонстрации) */
+/*
+img:hover {
+    height: 400px;
+    width:  400px;
+    transition: all 0.3s ease; /* плавный переход — CSS transition */
+}
+*/
